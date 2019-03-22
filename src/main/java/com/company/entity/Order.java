@@ -3,12 +3,12 @@ package com.company.entity;
 public class Order {
 
     private final Long orderId;
-    private final Item[] items;
+    private final Item item;
     private final User user;
 
-    public Order(Long orderId, Item[] goods, User user) {
+    public Order(Long orderId, Item item, User user) {
         this.orderId = orderId;
-        this.items = goods;
+        this.item = item;
         this.user = user;
     }
 
@@ -16,8 +16,8 @@ public class Order {
         return orderId;
     }
 
-    public Item[] getItems() {
-        return items;
+    public Item getItem() {
+        return item;
     }
 
     public User getUser() {
