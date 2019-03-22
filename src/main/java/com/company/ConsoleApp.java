@@ -3,6 +3,13 @@ package com.company;
 import com.company.entity.Item;
 import com.company.entity.Order;
 import com.company.entity.User;
+import com.company.repository.ItemRepository;
+import com.company.repository.OrderRepository;
+import com.company.repository.UserRepository;
+import com.company.service.ItemService;
+import com.company.service.OrderService;
+import com.company.service.UserService;
+import com.company.ui.ConsoleUI;
 
 public class ConsoleApp {
     private static final int ITEM_NUMBER = 5;
@@ -26,7 +33,19 @@ public class ConsoleApp {
         users[4] = new User(4L, "ian@gmail.com", "5555");
 
         Order [] orders = new Order[ORDER_NUMBER];
-        orders[0] = new Order(1L, null, null);
+        //TODO: Orders should be added
+//        orders[0] = new Order(1L, null, null);
+
+        ItemRepository itemRepository = new ItemRepository(items);
+        OrderRepository orderRepository = new OrderRepository(orders);
+        UserRepository userRepository = new UserRepository(users);
+
+        UserService userService = new UserService(userRepository);
+        OrderService orderService = new OrderService(orderRepository);
+        ItemService itemService = new ItemService(itemRepository);
+
+        ConsoleUI consoleUI = new ConsoleUI(userService);
+        consoleUI.run();
 
     }
 }

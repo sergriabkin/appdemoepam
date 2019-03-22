@@ -6,10 +6,10 @@ public class User {
     private final String email;
     private final String password;
 
-    public User(Long id, String email, String name) {
+    public User(Long id, String email, String password) {
         this.userId = id;
         this.email = email;
-        this.password = name;
+        this.password = password;
     }
 
     public Long getUserId() {
@@ -22,5 +22,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

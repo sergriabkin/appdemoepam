@@ -22,7 +22,7 @@ public class UserRepository {
     }
 
     //find by email
-    public User findByUserEmail(Long email){
+    public User findByUserEmail(String email){
         for (User user : users){
             if (user.getEmail().equals(email)){
                 return user;
