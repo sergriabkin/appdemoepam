@@ -2,31 +2,9 @@ package com.company.repository;
 
 import com.company.entity.Order;
 
-public class OrderRepository {
+public interface OrderRepository {
 
-    private Order [] orders;
+     Order findByOrderId(Long orderId);
 
-    public OrderRepository(Order [] orders) {
-        this.orders = orders;
-    }
-
-    public Order findByOrderId(Long orderId){
-        for (Order order: orders) {
-            if (order.getOrderId().equals(orderId)){
-                return order;
-            }
-        }
-        return null;
-    }
-
-    public Order findByUserId(Long userId){
-        for (Order order: orders) {
-            if (order.getUser().getUserId().equals(userId)){
-                return order;
-            }
-        }
-        return null;
-    }
-
-
+     Order findByUserId(Long userId);
 }

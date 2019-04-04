@@ -1,25 +1,12 @@
 package com.company.service;
 
-import com.company.entity.User;
-import com.company.repository.UserRepository;
+import com.company.entity.user.User;
 
-public class UserService {
-    private UserRepository userRepository;
+public interface UserService {
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    User findUserById(Long userId);
 
-    public User findUserById(Long userId){
-        return userRepository.findByUserId(userId);
-    }
-    public User findUserByEmail(String email){
-        return userRepository.findByUserEmail(email);
-    }
+    User findUserByEmail(String email);
 
-    public boolean login (String email, String password){
-        User user = userRepository.findByUserEmail(email);
-        return user == null ? false : user.getPassword().equals(password);
-    }
-
+    boolean login(String email, String password);
 }

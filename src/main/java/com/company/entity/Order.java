@@ -1,5 +1,7 @@
 package com.company.entity;
 
+import com.company.entity.user.User;
+
 public class Order {
 
     private final Long orderId;
