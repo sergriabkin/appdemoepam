@@ -23,6 +23,11 @@ public class UserRepositoryImpl implements UserRepository {
         return null;
     }
 
+    @Override
+    public void save(User user) {
+        System.out.println("user was created in database");
+    }
+
     //find by email
     @Override
     public User findByUserEmail(String email){
