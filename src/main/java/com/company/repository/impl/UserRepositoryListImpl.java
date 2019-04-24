@@ -3,24 +3,30 @@ package com.company.repository.impl;
 import com.company.entity.user.User;
 import com.company.repository.UserRepository;
 
-public class UserRepositoryImpl implements UserRepository {
+import java.util.List;
 
-    private User [] users;
+public class UserRepositoryListImpl implements UserRepository {
 
-    public UserRepositoryImpl(User [] users) {
+    private List<User> users;
+
+    public UserRepositoryListImpl(List<User> users) {
         this.users = users;
     }
 
-
-    //find by id
     @Override
-    public User findByUserId(Long userId){
+    public User findByUserId(Long userId) {
         for (User user : users){
             if (user.getUserId().equals(userId)){
                 return user;
             }
         }
         return null;
+    }
+
+    @Override
+    public User create(User user) {
+        users.add(user);
+        return user;
     }
 
     @Override

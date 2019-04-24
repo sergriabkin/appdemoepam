@@ -7,12 +7,15 @@ import com.company.entity.user.User;
 import com.company.repository.*;
 import com.company.repository.impl.ItemRepositoryImpl;
 import com.company.repository.impl.OrderRepositoryImpl;
-import com.company.repository.impl.UserRepositoryImpl;
+import com.company.repository.impl.UserRepositoryArrayImpl;
+import com.company.repository.impl.UserRepositoryListImpl;
 import com.company.service.*;
 import com.company.service.impl.ItemServiceImpl;
 import com.company.service.impl.OrderServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import com.company.ui.ConsoleUI;
+
+import java.util.Arrays;
 
 public class ConsoleApp {
     private static final int ITEM_NUMBER = 5;
@@ -41,7 +44,7 @@ public class ConsoleApp {
 
         ItemRepository itemRepository = new ItemRepositoryImpl(items);
         OrderRepository orderRepository = new OrderRepositoryImpl(orders);
-        UserRepository userRepository = new UserRepositoryImpl(users);
+        UserRepository userRepository = new UserRepositoryListImpl(Arrays.asList(users));
 
         UserService userService = new UserServiceImpl(userRepository);
         OrderService orderService = new OrderServiceImpl(orderRepository);

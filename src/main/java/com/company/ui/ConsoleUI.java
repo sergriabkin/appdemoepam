@@ -4,6 +4,7 @@ import com.company.entity.user.Admin;
 import com.company.entity.user.User;
 import com.company.entity.user.UserType;
 import com.company.service.UserService;
+import com.company.util.Validator;
 
 import java.util.Scanner;
 
@@ -20,11 +21,20 @@ public class ConsoleUI {
         String email = null;
 
         while (!isLogin) {
-            System.out.println("Please input your email and password");
+            System.out.println("1-Login / 2-Create acc");
+            int choose = scanner.nextInt();
+
+            System.out.println("Please input your email");
             email = scanner.next();
+//            Validator.validateEmail(email);
+
+            System.out.println("Please input your password");
             String password = scanner.next();
 
-            isLogin = userService.login(email, password);
+            isLogin = choose == 1 ? userService.login(email, password) :
+                    userService.create(new User(100L, email, password) ) != null;
+
+
         }
 
         User user = userService.findUserByEmail(email);
